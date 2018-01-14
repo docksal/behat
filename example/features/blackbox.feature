@@ -5,8 +5,8 @@ Feature: Getbootstrap smoke testing
 
   Scenario: Open home page and find text
     Given I am on "http://getbootstrap.com/"
-    Then I should see text matching "Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web."
-    When I follow "Getting started"
-    Then I should see text matching "Getting started"
-    When I follow "CSS"
-    Then I should see text matching "Global CSS settings, fundamental HTML elements styled and enhanced with extensible classes, and an advanced grid system."
+    Then I should see text matching "Bootstrap is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system."
+    When I follow "Get started"
+    Then I should see text matching "Get started with Bootstrap"
+    When I follow "Layout"
+    Then I should see text matching "Components and options for laying out your Bootstrap project, including wrapping containers, a powerful grid system, a flexible media object, and responsive utility classes."

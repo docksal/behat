@@ -50,17 +50,17 @@ Features:
 ```
 git clone https://github.com/docksal/behat.git docksal-behat
 cd docksal-behat/example
-./run-behat features/blackbox.feature
+behat features/blackbox.feature
 ```
+
+Note: if you did not add the shell alias, replace `behat` with `docker run --rm -v $(pwd):/src docksal/behat --colors`.
 
 
 ### Behat with Selenium
 
-To run Behat tests that require a real browser (e.g. for JavaScript support) 
-a headless Selenium Chrome/Firefox can be used.
+To run Behat tests that require a real browser (e.g. for JavaScript support) a headless Selenium Chrome/Firefox can be used.
 
-There is a Docker Compose configuration in the example folder, 
-that will get you up and running with a Selenium Chrome
+There is a Docker Compose configuration in the example folder, that will get you up and running with a Selenium Chrome.
 
 ```
 cd example
@@ -68,6 +68,8 @@ docker-compose up -d
 ./run-behat features/blackbox-javascript.feature
 ```
 
+In this case, you get two containers - one running a built-in PHP server for access to HTML reports and one running Selenium. 
+Behat runs within the first container and talks to the Selenium container to run tests with a real browser (Chrome/Firefox).
 
 ### Switching between Chrome and Firefox
 

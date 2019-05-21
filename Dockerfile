@@ -21,6 +21,7 @@ RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/commun
     php7-phar \
     php7-mbstring \
     php7-ctype \
+    openssl \
     && rm -rf /var/cache/apk/*
 
 RUN \

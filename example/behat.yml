@@ -48,6 +48,12 @@ default:
       print_outp: true
       loop_break: true
 
+     # Bex Screenshot
+    Bex\Behat\ScreenshotExtension:
+      image_drivers:
+        local:
+          screenshot_directory: "%paths.base%/screenshots/"
+
 docker:
   extensions:
     Behat\MinkExtension:

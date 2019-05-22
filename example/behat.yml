@@ -52,7 +52,7 @@ default:
     Bex\Behat\ScreenshotExtension:
       image_drivers:
         local:
-          screenshot_directory: "%paths.base%/<change_screenshots_folder_name>/"
+          screenshot_directory: "%paths.base%/screenshots/"
 
 docker:
   extensions:

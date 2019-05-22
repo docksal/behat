@@ -113,6 +113,12 @@ HTML report will be generated into the `html_report` folder.
 It can be accessed by navigating to `http://<your-docker-host-ip>:8000/html_report` in your browser.  
 Replace `<your-docker-host-ip>` as necessary (e.g. `localhost`).
 
+### Bex Screenshot
+
+The `Bex` extension will generate a screenshot when you have a failed step.
+
+You can configure the folder that the screenshots are saved into through the `behat.yml` file. Check the example and look for `screenshot_directory` under  `Bex\Behat\ScreenshotExtension`.
+
 
 ## Debugging
 

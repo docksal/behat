@@ -1,8 +1,9 @@
-FROM alpine:edge
+ARG FROM
+FROM ${FROM}
 
 MAINTAINER Leonid Makarov <leonid.makarov@ffwagency.com>
 
-RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community  add \
+RUN apk add --no-cache \
     bash \
     curl \
     git \

@@ -27,7 +27,7 @@ RUN apk add --no-cache \
 
 RUN \
 	# Symlinks php7
-	ln -s /usr/bin/php7 /usr/bin/php
+	ln -s -f /usr/bin/php7 /usr/bin/php
 
 ENV COMPOSER_VERSION 1.2.0
 

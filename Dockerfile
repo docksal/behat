@@ -29,7 +29,8 @@ RUN \
 	# Symlinks php7
 	ln -s -f /usr/bin/php7 /usr/bin/php
 
-ENV COMPOSER_VERSION 1.2.0
+#ENV COMPOSER_VERSION 1.2.0
+ENV COMPOSER_VERSION 1.8.5
 
 RUN \
 	# Install Composer

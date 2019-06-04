@@ -1,8 +1,9 @@
-FROM alpine:edge
+ARG FROM
+FROM ${FROM}
 
 MAINTAINER Leonid Makarov <leonid.makarov@ffwagency.com>
 
-RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community  add \
+RUN apk add --no-cache \
     bash \
     curl \
     git \
@@ -26,9 +27,9 @@ RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/commun
 
 RUN \
 	# Symlinks php7
-	ln -s /usr/bin/php7 /usr/bin/php
+	ln -s -f /usr/bin/php7 /usr/bin/php
 
-ENV COMPOSER_VERSION 1.2.0
+ENV COMPOSER_VERSION 1.8.5
 
 RUN \
 	# Install Composer

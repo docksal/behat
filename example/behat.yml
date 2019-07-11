@@ -9,7 +9,7 @@ default:
         - Drupal\DrupalExtension\Context\DrushContext
         - FeatureContext:
             parameters:
-              screenshot_dir: %paths.base%/screenshots
+              screenshot_dir: '%paths.base%/screenshots'
 
   extensions:
     Behat\MinkExtension:

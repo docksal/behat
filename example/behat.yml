@@ -14,7 +14,6 @@ default:
   extensions:
     Behat\MinkExtension:
       goutte: ~
-      selenium2: ~
       # Use goutte (basic PHP browser, super fast) as the default driver.
       default_session: goutte
       # For real browser testing and tests requiring JS use selenium2 driver.
@@ -26,6 +25,10 @@ default:
       selenium2:
         wd_host: http://browser:4444/wd/hub
         capabilities: { "browser": "chrome", "version": "*" }
+        extra_capabilities:
+          chromeOptions:
+            args: ['--headless', '--disable-gpu']
+            w3c: false
 
     Drupal\DrupalExtension:
       # Map template regions.

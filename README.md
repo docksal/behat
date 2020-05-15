@@ -127,3 +127,41 @@ The following command will start a bash session in the container.
 ```
 docker run --rm -v $(pwd):/src -it --entrypoint=bash docksal/behat
 ```
+
+## Usage in PhpStorm / IntelliJ
+When using the Behat integration of PhpStorm, the folder `/opt/project` in the Docker service is used as project root. 
+This will result in PhpStorm attempting to run the feature from this folder, instead of `/src`. 
+An incorrectly generated run command will look like: 
+
+```
+[docker-compose://[{PROJECT_ROOT}/docker-compose.yml]:behat/]:php /opt/.phpstorm_helpers/behat.php --format PhpStormBehatFormatter --no-interaction --config /src/behat.yml /opt/project/features/helloworld.feature
+```
+
+Instead of 
+
+```
+[docker-compose://[{PROJECT_ROOT}/docker-compose.yml]:behat/]:php /opt/.phpstorm_helpers/behat.php --format PhpStormBehatFormatter --no-interaction --config /src/behat.yml /src/features/helloworld.feature
+```
+
+The default Docker project root location can only be configured in the IDEA configuration XML file, and not from the user interface.
+
+1. Configure the `behat` Docker service as Remote PHP Interpreter using [the JetBrains instructions](https://www.jetbrains.com/help/phpstorm/configuring-remote-interpreters.html). Make sure to select **Docker compose** and not **Docker** from the dialog. Name the interpreter **behat**, this value is important because you will need it in step 2 and 3. 
+2. Add a new `Behat by Remote Interpreter` under `Settings` > `Languages & Frameworks` > `PHP` > `Test Frameworks`. Follow the instructions in the section **Configure Behat manually [from the PhpStorm manual](https://www.jetbrains.com/help/phpstorm/using-behat-framework.html). Use these settings:
+      * CLI interpreter: `behat` (the name you chose in step 1)
+      * Path mappings: `<Project root>` -> `/src`
+      * Path to Behat executable: `/opt/behat/bin/behat`
+      * Default configuration file: `/src/behat.yml`
+3. Edit the file `php.xml` in your project's `.idea` folder. Locate the `<remote_data>` tag under `project.component.interpreters.interpreter`. It may be that multiple `<remote_data>` tags exist. In this case, select the tag with the property `DOCKER_COMPOSE_SERVICE_NAME` set to the name of your interpreter from step 1 (e.g. **behat**).
+  The tag should look like this:
+    
+   ```
+   <remote_data DOCKER_ACCOUNT_NAME="Docker" DOCKER_COMPOSE_SERVICE_NAME="behat" DOCKER_REMOTE_PROJECT_PATH="/opt/project" INTERPRETER_PATH="php" HELPERS_PATH="/opt/.PhpStorm_helpers" INITIALIZED="false" VALID="true" RUN_AS_ROOT_VIA_SUDO="false">
+   ```
+
+3. Set the value of `DOCKER_REMOTE_PROJECT_PATH` to `/src`. The tag should now look like this: 
+
+   ```
+   <remote_data DOCKER_ACCOUNT_NAME="Docker" DOCKER_COMPOSE_SERVICE_NAME="behat" DOCKER_REMOTE_PROJECT_PATH="/src" INTERPRETER_PATH="php" HELPERS_PATH="/opt/.PhpStorm_helpers" INITIALIZED="false" VALID="true" RUN_AS_ROOT_VIA_SUDO="false">
+   ```
+
+4. Restart PhpStorm to reload the configuration change, and restart Docker for your changes to take effect.

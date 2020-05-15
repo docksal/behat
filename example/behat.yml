@@ -14,18 +14,23 @@ default:
   extensions:
     Behat\MinkExtension:
       goutte: ~
-      selenium2: ~
       # Use goutte (basic PHP browser, super fast) as the default driver.
       default_session: goutte
       # For real browser testing and tests requiring JS use selenium2 driver.
-      # Tag features/scenarious with @javascript to use the selenium2 driver.
+      # Tag features/scenarios with @javascript to use the selenium2 driver.
       javascript_session: selenium2
       # Configure browser to be used. Browser must be available on wd_host.
       # Stick with chrome by default. It's 2x faster than firefox or phantomjs (your results may vary).
       browser_name: chrome
       selenium2:
         wd_host: http://browser:4444/wd/hub
-        capabilities: { "browser": "chrome", "version": "*" }
+        capabilities:
+          browser: "chrome"
+          version: "*"
+          marionette: true
+          extra_capabilities:
+            chromeOptions:
+              w3c: false
 
     Drupal\DrupalExtension:
       # Map template regions.

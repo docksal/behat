@@ -146,7 +146,7 @@ Instead of
 The default Docker project root location can only be configured in the IDEA configuration XML file, and not from the user interface.
 
 1. Configure the `behat` Docker service as Remote PHP Interpreter using [the JetBrains instructions](https://www.jetbrains.com/help/phpstorm/configuring-remote-interpreters.html). Make sure to select **Docker compose** and not **Docker** from the dialog. Name the interpreter **behat**, this value is important because you will need it in step 2 and 3. 
-2. Add a new `Behat by Remote Interpreter` under `Settings` > `Languages & Frameworks` > `PHP` > `Test Frameworks`. Follow the instructions in the section **Configure Behat manually [from the PhpStorm manual](https://www.jetbrains.com/help/phpstorm/using-behat-framework.html). Use these settings:
+2. Add a new `Behat by Remote Interpreter` under `Settings` > `Languages & Frameworks` > `PHP` > `Test Frameworks`. Follow the instructions in the section **Configure Behat manually** [from the PhpStorm manual](https://www.jetbrains.com/help/phpstorm/using-behat-framework.html). Use these settings:
       * CLI interpreter: `behat` (the name you chose in step 1)
       * Path mappings: `<Project root>` -> `/src`
       * Path to Behat executable: `/opt/behat/bin/behat`

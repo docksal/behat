@@ -6,10 +6,10 @@ This image is part of the [Docksal](http://docksal.io) project.
 
 Features:
 
-- PHP7, Composer
-- Behat 3.x
-- DrupalExtension 3.x
-
+- PHP7, Composer 2
+- Behat 3.8.x
+- DrupalExtension 4.1.x
+- 
 
 ## Usage
 
@@ -18,7 +18,7 @@ Working directory is expected to be mounted at `/src` in the container.
 
 ```
 $ docker run --rm -v $(pwd):/src docksal/behat --version
-behat version 3.1.0
+behat 3.8.1
 ```
 
 You can also add a shell alias (in `.bashrc`, `.zshrc`, etc.) for convenience.
@@ -31,7 +31,7 @@ Restart your shell or open a new one, then
 
 ```
 $ behat --version
-behat version 3.1.0
+behat 3.8.1
 ```
 
 

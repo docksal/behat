@@ -1,8 +1,6 @@
 ARG FROM
 FROM ${FROM}
 
-MAINTAINER Leonid Makarov <leonid.makarov@ffwagency.com>
-
 RUN apk add --no-cache \
     bash \
     curl \
@@ -29,7 +27,7 @@ RUN \
 	# Symlinks php7
 	ln -s -f /usr/bin/php7 /usr/bin/php
 
-ENV COMPOSER_VERSION 1.8.5
+ENV COMPOSER_VERSION 2.0.8
 
 RUN \
 	# Install Composer

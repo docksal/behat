@@ -77,8 +77,8 @@ Behat runs within the first container and talks to the Selenium container to run
  
     ```
     # Pick/uncomment one
-    image: selenium/standalone-chrome
-    #image: selenium/standalone-firefox
+    image: selenium/standalone-chrome-debug:3.141.59
+    #image: selenium/standalone-firefox-debug:3.141.59
     ```
 
 2. Update container configuration 

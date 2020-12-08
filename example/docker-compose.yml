@@ -4,7 +4,7 @@ services:
   # Behat
   behat:
     hostname: behat
-    image: docksal/behat
+    image: ${BEHAT_IMAGE:-docksal/behat}
     volumes:
       - .:/src
     # Run a built-in web server for access to HTML reports
@@ -15,5 +15,15 @@ services:
   browser:
     hostname: browser
     # Pick/uncomment one
-    image: selenium/standalone-chrome
-    #image: selenium/standalone-firefox
+    # v3.141.59 for both chrome and firefox were tested and work.
+    image: ${SELENIUM_IMAGE:-selenium/standalone-chrome-debug:3.141.59}
+    #image: ${SELENIUM_IMAGE:-selenium/standalone-firefox-debug:3.141.59}
+    volumes:
+      # Workaround to avoid the browser crashing inside a docker container
+      # See https://github.com/SeleniumHQ/docker-selenium#quick-start
+      - /dev/shm:/dev/shm
+    # VNC port for debugging
+    # Host: <your-docker-host>:5900 (e.g, localhost:5900, 192.168.64.100:5900)
+    # Password: secret
+    ports:
+      - 5900:5900

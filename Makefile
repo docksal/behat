@@ -1,6 +1,6 @@
 -include env_make
 
-FROM ?= alpine:3.9
+FROM ?= alpine:3.12
 VERSION ?= dev
 TAG ?= $(VERSION)
 
@@ -13,7 +13,8 @@ build:
 	docker build -t $(REPO):$(TAG) --build-arg FROM=$(FROM) .
 
 test:
-	IMAGE=$(REPO):$(TAG) NAME=$(NAME) VERSION=$(VERSION) ./tests/test.bats
+	#IMAGE=$(REPO):$(TAG) NAME=$(NAME) VERSION=$(VERSION) ./tests/test.bats
+	@scripts/test.sh
 
 push:
 	docker push $(REPO):$(TAG)
@@ -39,6 +40,9 @@ logs:
 clean:
 	docker rm -f $(NAME) >/dev/null 2>&1 || true
 
-release: build push
+release:
+	@scripts/docker-push.sh
 
-default: build
+# https://stackoverflow.com/a/6273809/1826109
+%:
+	@:

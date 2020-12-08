@@ -1,4 +1,4 @@
-version: "2"
+version: "2.1"
 
 services:
   # Behat
@@ -15,7 +15,8 @@ services:
   browser:
     hostname: browser
     # Pick/uncomment one
-    # v3.141.59 for both chrome and firefox were tested and work.
+    # Pin selenium image to an older version
+    # See https://github.com/docksal/docksal/issues/1096#issuecomment-543316840
     image: ${SELENIUM_IMAGE:-selenium/standalone-chrome-debug:3.141.59}
     #image: ${SELENIUM_IMAGE:-selenium/standalone-firefox-debug:3.141.59}
     volumes:

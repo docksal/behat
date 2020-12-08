@@ -4,7 +4,7 @@ Feature: Getbootstrap smoke testing
 
 
   Scenario: Open home page and find text
-    Given I am on "http://getbootstrap.com/"
+    Given I am on "https://getbootstrap.com/"
     Then I should see text matching "Build fast, responsive sites with Bootstrap."
     When I follow "Get started"
     Then I should see text matching "Get started with Bootstrap"

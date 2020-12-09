@@ -1,16 +1,28 @@
-dist: bionic
+dist: focal
 
 language: minimal
 
 env:
   global:
     - REPO=docksal/behat
+    - DOCKSAL_VERSION=develop
+
+install:
+  # Install Docksal to have a matching versions of Docker on the build host
+  - curl -fsSL https://get.docksal.io | DOCKSAL_VERSION=${DOCKSAL_VERSION} bash
+
+before_script:
+  - docker version
+  - docker-compose --version
+  - fin version
+  - fin sysinfo
 
 script:
   - make
+  - make test
 
 after_success:
-  - ${TRAVIS_BUILD_DIR}/release.sh
+  - make release
 
 after_failure:
   - make logs

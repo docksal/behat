@@ -4,9 +4,9 @@ Feature: Getbootstrap smoke testing
 
 
   Scenario: Open home page and find text
-    Given I am on "http://getbootstrap.com/"
+    Given I am on "https://getbootstrap.com/"
     Then I should see text matching "Build fast, responsive sites with Bootstrap."
     When I follow "Get started"
     Then I should see text matching "Get started with Bootstrap"
-    When I follow "Layout"
-    Then I should see text matching "Components and options for laying out your Bootstrap project, including wrapping containers, a powerful grid system, a flexible media object, and responsive utility classes."
+    When I follow "Starter template"
+    Then I should see text matching "Be sure to have your pages set up with the latest design and development standards"

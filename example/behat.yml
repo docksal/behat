@@ -20,17 +20,20 @@ default:
       # Tag features/scenarios with @javascript to use the selenium2 driver.
       javascript_session: selenium2
       # Configure browser to be used. Browser must be available on wd_host.
-      # Stick with chrome by default. It's 2x faster than firefox or phantomjs (your results may vary).
+      # Stick with "chrome" by default. It's 2x faster than firefox or phantomjs (your results may vary).
       browser_name: chrome
+      #browser_name: firefox
       selenium2:
         wd_host: http://browser:4444/wd/hub
-        capabilities:
-          browser: "chrome"
-          version: "*"
-          marionette: true
-          extra_capabilities:
-            chromeOptions:
-              w3c: false
+
+        # TODO: These settings seems to be no longer necessary for Chrome.
+        #capabilities:
+        #  browser: "chrome"
+        #  version: "*"
+        #  marionette: true
+        #  extra_capabilities:
+        #    chromeOptions:
+        #      w3c: false
 
     Drupal\DrupalExtension:
       # Map template regions.

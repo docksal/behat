@@ -20,4 +20,9 @@ echo
 echo "Testing Behat with Selenium Chrome..."
 docker-compose images
 docker-compose up -d
+# IMPORTANT: Selenium container may need a few seconds to initialize
+# If Behat hits Selenium too early, tests will fail with:
+# "Element not found with xpath, //html
+#       (WebDriver\Exception\NoSuchElement)"
+sleep 5
 ./run-behat features/blackbox-javascript.feature
